@@ -1,0 +1,17 @@
+	{% for post in posts %}
+
+	<article class="media content-section">
+		<a href='{{post.author.profile.picture.url}}'>
+			<img class='article-img' src='{{post.author.profile.picture.url}}' alt="profile_picture">
+		</a>
+		<div class="media-body">
+			<div class="article-metadata">
+				<a id='post_author' class="mr-2" href="{% url user_posts post.author %}">{{ post.author }}</a>
+				<small class="text-muted">{{ post.date|date:'F d, Y' }}</small>
+				
+			</div>
+			<h2><a id='post_title' class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+			<p class="article-content">{{ post.content }}</p>
+		</div>
+	</article>
+	{% endfor %}

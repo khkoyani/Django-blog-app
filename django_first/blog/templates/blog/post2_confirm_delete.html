@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	<div class="content-section">
+		<h2 class="form_header">Delete Post?</h2>
+		<hr>
+		<form method='POST'>
+			{% csrf_token %}
+			<h4>Are you sure you want to delete the post?</h4><br>
+			<h4 class='indent' id='indent2'>
+				<a href="{% url 'post_detail' pk=object.id %}">{{object.title}}</a></h4>
+			<div class='border-bt pt-3'>
+				<button type='submit' class="btn btn-danger btn-md" id='form_submit_btn'>Yes, Delete</button>
+				<a class="btn btn-secondary btn-md" href="{% url 'post_detail' pk=object.id %}">Cancel</a>
+			</div>
+		</form>
+	</div>
+{% endblock content %}
